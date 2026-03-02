@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Basic Calculator -->
+        <div class="calculator" id="basicCalc">
+            <form action="">
+                <div class="display">
+                    <input type="text" id="display" name="display"> 
+                </div>
+                <div>
+                    <input type="button" value="C" onclick="clearDisplay()" class="operator">
+                    <input type="button" value="DE" onclick="deleteLastChar()" class="operator">
+                    <input type="button" value="SC" onclick="toggleScientificDrawer()" class="operator" id="scBtn">
+                    <input type="button" value="/" onclick="appendToDisplay('/')" class="operator">
+                </div>
+                <div>
+                    <input type="button" value="7" onclick="appendToDisplay('7')">
+                    <input type="button" value="8" onclick="appendToDisplay('8')">
+                    <input type="button" value="9" onclick="appendToDisplay('9')">
+                    <input type="button" value="*" onclick="appendToDisplay('*')" class="operator">
+                </div>
+                <div>
+                    <input type="button" value="4" onclick="appendToDisplay('4')">
+                    <input type="button" value="5" onclick="appendToDisplay('5')">
+                    <input type="button" value="6" onclick="appendToDisplay('6')">
+                    <input type="button" value="-" onclick="appendToDisplay('-')" class="operator">
+                </div>
+                <div>
+                    <input type="button" value="1" onclick="appendToDisplay('1')">
+                    <input type="button" value="2" onclick="appendToDisplay('2')">
+                    <input type="button" value="3" onclick="appendToDisplay('3')">
+                    <input type="button" value="+" onclick="appendToDisplay('+')" class="operator">
+                </div>
+                <div>
+                    <input type="button" value="." onclick="appendToDisplay('.')">
+                    <input type="button" value="0" onclick="appendToDisplay('0')">
+                    <input type="button" value="00" onclick="appendToDisplay('00')">
+                    <input type="button" value="=" class="equal" onclick="calculate()">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scientific Drawer Panel -->
+    <div class="sci-drawer" id="sciDrawer">
+        <div class="sci-drawer-header">
+            <h3>Scientific Functions</h3>
+            <button class="close-btn" onclick="toggleScientificDrawer()">✕</button>
+        </div>
+        <div class="sci-drawer-content">
+            <form action="">
+                <!-- Row 1: Mode and special functions -->
+                <div>
+                    <input type="button" value="Deg" onclick="toggleDegRad()" id="degRadBtn" class="operator sci-func" style="flex: 1;">
+                    <input type="button" value="|" disabled style="flex: 0.5; cursor: default;">
+                    <input type="button" value="Rad" onclick="toggleDegRad()" class="operator sci-func" style="flex: 1;">
+                    <input type="button" value="x!" onclick="scientificFunction('factorial')" class="operator sci-func" style="flex: 1;">
+                </div>
+                <!-- Row 2: Inverse and trig functions -->
+                <div>
+                    <input type="button" value="Inv" onclick="toggleInverse()" id="invBtn" class="operator sci-func">
+                    <input type="button" value="sin" onclick="scientificFunction('sin')" class="operator sci-func" id="sinBtn">
+                    <input type="button" value="ln" onclick="scientificFunction('ln')" class="operator sci-func">
+                </div>
+                <!-- Row 3: Pi, cos, log -->
+                <div>
+                    <input type="button" value="π" onclick="appendSciDisplay('3.14159')" class="operator sci-func">
+                    <input type="button" value="cos" onclick="scientificFunction('cos')" class="operator sci-func" id="cosBtn">
+                    <input type="button" value="log" onclick="scientificFunction('log')" class="operator sci-func">
+                </div>
+                <!-- Row 4: e, tan, sqrt -->
+                <div>
+                    <input type="button" value="e" onclick="appendSciDisplay('2.71828')" class="operator sci-func">
+                    <input type="button" value="tan" onclick="scientificFunction('tan')" class="operator sci-func" id="tanBtn">
+                    <input type="button" value="√" onclick="scientificFunction('sqrt')" class="operator sci-func">
+                </div>
+                <!-- Row 5: Ans, EXP, x^y -->
+                <div>
+                    <input type="button" value="Ans" onclick="useLastAnswer()" class="operator sci-func">
+                    <input type="button" value="EXP" onclick="appendSciDisplay('e')" class="operator sci-func">
+                    <input type="button" value="x^y" onclick="appendSciDisplay('^')" class="operator sci-func">
+                </div>
+                <!-- Row 6: Parentheses and basic operators -->
+                <div>
+                    <input type="button" value="(" onclick="appendSciDisplay('(')" class="operator">
+                    <input type="button" value=")" onclick="appendSciDisplay(')')" class="operator">
+                    <input type="button" value="%" onclick="appendSciDisplay('%')" class="operator">
+                </div>
+                <!-- Row 7: Controls -->
+                <div>
+                    <input type="button" value="C" onclick="clearSciDisplay()" class="operator">
+                    <input type="button" value="DE" onclick="deleteSciLastChar()" class="operator">
+                    <input type="button" value="=" class="equal" onclick="calculateScientific()" style="flex: 2;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay backdrop -->
+    <div class="sci-overlay" id="sciOverlay" onclick="toggleScientificDrawer()"></div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

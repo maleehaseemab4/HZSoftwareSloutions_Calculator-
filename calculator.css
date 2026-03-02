@@ -1,0 +1,321 @@
+
+body {
+    background: #e3f6fd;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, sans-serif;
+}
+
+.container {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.calculator {
+    background: #3d4852;
+    padding: 32px 28px 28px 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    align-items: stretch;
+}
+
+.calculator form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calculator form > div {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.calculator form input {
+    border: none;
+    outline: none;
+    flex: 1;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #495463;
+    color: #fff;
+    box-shadow: none;
+    transition: background 0.2s;
+    font-weight: 500;
+    min-width: 0;
+    font-family: Verdana, sans-serif;
+}
+.calculator form input:hover {
+    background: #5a6370;
+}
+.calculator form input:active {
+    background: #3d4852;
+}
+
+.display {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+    background: #495463;
+    border-radius: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.display input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    text-align: right;
+    box-shadow: none;
+    padding: 0;
+    font-weight: 500;
+    font-family: Verdana, sans-serif;
+}
+
+.calculator form input.equal {
+    background: #3d4852;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 8px;
+}
+form input.operator {
+  
+    color: #f70000;
+}
+
+/* Scientific Calculator Styles */
+.calculator.scientific {
+    width: 520px;
+}
+
+.calculator.scientific form > div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.calculator.scientific form input.sci-func {
+    color: #00d4ff;
+    font-size: 14px;
+}
+
+.calculator.scientific form input[disabled] {
+    background: #3d4852;
+    color: #666;
+}
+
+/* Scientific Drawer Styles */
+.sci-drawer {
+    position: fixed;
+    top: 50%;
+    right: -420px;
+    transform: translateY(-50%);
+    height: auto;
+    max-height: 90vh;
+    width: 400px;
+    background: #3d4852;
+    border-radius: 12px;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.3);
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.sci-drawer.open {
+    right: 30px;
+}
+
+.sci-drawer-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #495463;
+    background: #3d4852;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.sci-drawer-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: #00d4ff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    font-weight: 300;
+}
+
+.close-btn:hover {
+    color: #00e5ff;
+}
+
+.close-btn:active {
+    color: #0099cc;
+}
+
+.sci-drawer-content {
+    padding: 16px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sci-drawer-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sci-drawer-content form > div {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.sci-drawer-content .display {
+    margin-bottom: 12px;
+    height: 60px;
+}
+
+.sci-drawer-content form input {
+    border: none;
+    outline: none;
+    flex: 1;
+    height: 42px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #495463;
+    color: #fff;
+    box-shadow: none;
+    transition: background 0.2s;
+    font-weight: 500;
+    min-width: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.sci-drawer-content form input:hover {
+    background: #5a6370;
+}
+
+.sci-drawer-content form input:active {
+    background: #3d4852;
+}
+
+.sci-drawer-content form input.operator {
+    color: #f70000;
+}
+
+.sci-drawer-content form input.sci-func {
+    color: #00d4ff;
+    font-size: 13px;
+}
+
+.sci-drawer-content form input[disabled] {
+    background: #3d4852;
+    color: #666;
+    cursor: default;
+}
+
+.sci-drawer-content form input.equal {
+    background: #00d4ff;
+    color: #3d4852;
+    font-weight: 600;
+}
+
+/* Overlay Backdrop */
+.sci-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+
+.sci-overlay.open {
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sci-drawer {
+        width: 350px;
+        right: -370px;
+    }
+    
+    .sci-drawer.open {
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sci-drawer {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        max-height: 60vh;
+        border-radius: 16px 16px 0 0;
+        transform: translateY(100%);
+        right: auto;
+    }
+    
+    .sci-drawer.open {
+        transform: translateY(0);
+        right: auto;
+    }
+    
+    .sci-drawer-content {
+        padding: 12px;
+    }
+    
+    .sci-drawer-content form input {
+        height: 38px;
+        font-size: 14px;
+    }
+}
