@@ -100,7 +100,6 @@ form input.operator {
     color: #f70000;
 }
 
-/* Scientific Calculator Styles */
 .calculator.scientific {
     width: 520px;
 }
@@ -121,7 +120,6 @@ form input.operator {
     color: #666;
 }
 
-/* Scientific Drawer Styles */
 .sci-drawer {
     position: fixed;
     top: 50%;
